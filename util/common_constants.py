@@ -1,11 +1,13 @@
 """Common constants module."""
 
-
 class Constants:
     """General constants class."""
 
     LOGGER_NAME = 'consumer'
     DEFAULT_LOG_LEVEL = 'INFO'
+    HOST = "localhost"
+    PORT = 8000
+    TEXT_FILE_NAME = "urls.txt"
 
     def __setattr__(self, attr, value):
         """Restrict editing constant values."""

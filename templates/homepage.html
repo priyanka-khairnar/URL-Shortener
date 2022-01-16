@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body th:inline="text">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static',filename='styles/homepage.css') }}"
+        />
+        <div>
+            <h3 style="border-bottom: 2px solid #3388dd; margin: 0px 0px 5px 0px">URL Shortener</h3>
+            <hr />
+
+            <form method="post">
+                <input type="text" name="url" id="url" required />
+                <input type="submit" value="Shortener" />
+                <br />
+                <br />
+                <label> Short URL : </label> <input type="text" style="width:73%;" id="shorturl" value ={{data}} ></input> 
+                <br />
+                <br />
+                
+            </form>
+        </div>
+        
+    </body>
+</html>
