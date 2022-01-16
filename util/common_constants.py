@@ -7,7 +7,7 @@ class Constants:
     DEFAULT_LOG_LEVEL = 'INFO'
     HOST = "localhost"
     PORT = 5001
-    TEXT_FILE_NAME = "urls.txt"
+    TEXT_FILE_NAME = "data/urls.txt"
 
     def __setattr__(self, attr, value):
         """Restrict editing constant values."""

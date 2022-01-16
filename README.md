@@ -47,9 +47,14 @@ To install python packages use below command:
   ```
 
 ### Run as docker image
-* To run as docker image:
+* To build image
   ```sh
-  docker run --name test-flask -p 5001:5001 priyankakhairnar/local_python_1:url-shortener
+  docker build --tag priyankakhairnar/local_python_1:url-shortener .
+  ```
+* To run as docker image:
+  To run Image you have to pass the absolute_path_of_local_directory of local volume
+  ```sh
+  docker run --name test-flask -p 5001:5001 -v absolute_path_of_local_directory/data/:/url-shortner/data/ priyankakhairnar/local_python_1:url-shortener
   ```
 
 * To test APP visit below URL:
