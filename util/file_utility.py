@@ -1,6 +1,9 @@
 """Utility module for handleling file."""
 import os
 from util.common_constants import Constants
+from util.logger_utility import LoggerUtility
+
+LoggerUtility.set_level()
 
 
 class FileUtility:
@@ -20,7 +23,7 @@ class FileUtility:
             return short_url
         else:
             return urls[0]
-
+        
     @staticmethod
     def get_long_url_from_text(short_url):
         """Get Long URL from Text File
@@ -31,7 +34,8 @@ class FileUtility:
         if len(urls) != 0:
             return urls[1].strip('\n')
         else:
-            raise Exception("Long URL not found!")
+            LoggerUtility.log_warning("Long URL not found!")
+            return None
 
     @staticmethod 
     def get_from_text_file(match_case, method):
@@ -57,3 +61,16 @@ class FileUtility:
                     return []
         else:
             return []
+        
+    @staticmethod
+    def load_file_data_as_dict():
+        """"""
+        data = {}
+        if os.path.exists(Constants.TEXT_FILE_NAME):
+            with open(Constants.TEXT_FILE_NAME, "r") as file:
+                for line in file:
+                    urls = line.split("-> ")
+                    data[urls[0]] = urls[1].strip('\n')
+            return data
+        else:
+            return data
