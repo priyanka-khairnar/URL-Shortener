@@ -47,12 +47,12 @@ To install python packages use below command:
   ```
 
 ### Run as docker image
-To run as docker image:
+* To run as docker image:
   ```sh
   docker run --name test-flask -p 5001:5001 priyankakhairnar/local_python_1:url-shortener
   ```
 
-To test APP visit
+* To test APP visit below URL:
   ```sh
   http://127.0.0.1:5001/shortener
   ```
