@@ -6,7 +6,7 @@ class Constants:
     LOGGER_NAME = 'consumer'
     DEFAULT_LOG_LEVEL = 'INFO'
     HOST = "localhost"
-    PORT = 8000
+    PORT = 5001
     TEXT_FILE_NAME = "urls.txt"
 
     def __setattr__(self, attr, value):

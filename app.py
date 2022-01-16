@@ -44,4 +44,5 @@ def redirect_long_url(shorturl):
     return redirect(long_url)
     
 if __name__ == '__main__':
-    APP.run(host=Constants.HOST, port=Constants.PORT, debug=True)
+    # APP.run(host=Constants.HOST, port=Constants.PORT, debug=True)
+    APP.run(host ='0.0.0.0', port = 5001, debug = True) 
