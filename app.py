@@ -1,6 +1,6 @@
 """Rest API for URL Shortener."""
 	
-from flask import Flask,  jsonify, request, render_template, redirect, url_for
+from flask import Flask,  jsonify, request, render_template, redirect
 from util.logger_utility import LoggerUtility
 from util.common_constants import Constants
 from shortener.shortener import Shortener
@@ -8,11 +8,12 @@ from flask import flash
 
 APP = Flask(__name__)
 
+LoggerUtility.set_level()
+
 @APP.route('/shortener', methods=['POST'])
 def url_shortener():
     """Rest API for URL Shortener."""
     try:
-        print(request)
         long_url = request.form['url']
         if not long_url:
             return jsonify({'error': 'Please provide url'}), 400
@@ -36,10 +37,10 @@ def home():
 @APP.route('/<shorturl>', methods=['GET'])
 def redirect_long_url(shorturl):
     """Rest API for URL Shortener."""
-    print(shorturl)
+    LoggerUtility.log_info('Short URL requested: ' + shorturl)
     shortener = Shortener()
     long_url = shortener.get_long_url(shorturl)
-    print(long_url)
+    LoggerUtility.log_info('Returning Long URL: ' + long_url)
     return redirect(long_url)
     
 if __name__ == '__main__':

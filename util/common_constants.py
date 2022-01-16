@@ -20,7 +20,7 @@ class Constants:
 class EnvironmentVariables:
     """Environment variables constants class."""
 
-    LOG_LEVEL = 'LOG_LEVEL'
+    LOG_LEVEL = 'INFO'
 
     def __setattr__(self, attr, value):
         """Restrict editing constant values."""
