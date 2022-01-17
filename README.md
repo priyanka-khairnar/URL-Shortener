@@ -51,6 +51,7 @@ To install python packages use below command:
   ```sh
   docker build --tag priyankakhairnar/local_python_1:url-shortener .
   ```
+
 * To run as docker image:
   To run Image you have to pass the absolute_path_of_local_directory of local volume
   ```sh
@@ -60,4 +61,9 @@ To install python packages use below command:
 * To test APP visit below URL:
   ```sh
   http://127.0.0.1:5001/shortener
+  ```
+
+* To test using CURL command:
+  ```sh
+  curl --location --request POST 'http://127.0.0.1:5001/shortener' --header 'Content-Type: application/json' -d '{"url" : "pass_long_url"}'
   ```
