@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
     <body th:inline="text">
         <link
@@ -9,21 +9,37 @@
             type="text/css"
             href="{{ url_for('static',filename='styles/homepage.css') }}"
         />
-        <div>
+        <div class="short">
             <h3 style="border-bottom: 2px solid #3388dd; margin: 0px 0px 5px 0px">URL Shortener</h3>
             <hr />
 
-            <form method="post">
                 <input type="text" name="url" id="url" required />
-                <input type="submit" value="Shortener" />
+                <input type="submit" id="shortener" value="Shortener" />
                 <br />
                 <br />
-                <label> Short URL : </label> <input type="text" style="width:73%;" id="shorturl" value ={{data}} ></input> 
+                <label> Short URL : </label> <input type="text" style="width:73%;" id="shorturl" ></input> 
                 <br />
                 <br />
                 
-            </form>
         </div>
-        
     </body>
+    <script> 
+        $(document).ready(function(){
+            console.log('Hello')
+            $("#shortener").click( function(){
+              var data = $('#url').val();
+              console.log(data)
+              $.ajax({
+                url: "/shortener",
+              type: "post",
+              data: JSON.stringify({'url':data}),
+              contentType: "application/json",
+              success: function(response) {
+                  console.log(response.short_url)
+                $("#shorturl").val(response.short_url);
+               }
+            });
+           });
+        });
+        </script>
 </html>
